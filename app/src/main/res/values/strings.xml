@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">TODO</string>
+    <string name="prompt_search">Write here …</string>
+    <string name="label_search">Search</string>
+    <string name="prompt_title">Title</string>
+    <string name="label_description">Description</string>
+    <string name="label_save">Save</string>
+    <string name="label_cancel">Cancel</string>
+    <string name="invalid_title">Not a valid title</string>
+    <string name="title_empty">The Title can not be empty</string>
+</resources>

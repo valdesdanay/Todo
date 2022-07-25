@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddTodoActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h96"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.96" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.04" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.04" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v96"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.96" />
+
+    <EditText
+        android:id="@+id/edtTitle"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/prompt_title"
+        android:imeOptions="actionDone"
+        android:minHeight="48dp"
+        android:selectAllOnFocus="true"
+        app:layout_constraintStart_toStartOf="@id/v04"
+        app:layout_constraintTop_toTopOf="@id/h04" />
+
+    <TextView
+        android:id="@+id/txvDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/label_description"
+        app:layout_constraintStart_toStartOf="@+id/v04"
+        app:layout_constraintTop_toBottomOf="@+id/edtTitle" />
+
+    <EditText
+        android:id="@+id/edtDesc"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:gravity="top|start"
+        android:hint="@string/prompt_search"
+        android:inputType="textMultiLine"
+        android:lines="8"
+        android:maxLines="10"
+        android:minLines="6"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/bottomContainer"
+        app:layout_constraintEnd_toStartOf="@+id/v96"
+        app:layout_constraintStart_toStartOf="@+id/v04"
+        app:layout_constraintTop_toBottomOf="@+id/txvDesc" />
+
+    <LinearLayout
+        android:id="@+id/bottomContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/h96"
+        app:layout_constraintEnd_toStartOf="@+id/v96"
+        android:layout_weight="1"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="@id/v04">
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_save" />
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:text="@string/label_cancel" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
