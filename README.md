@@ -34,6 +34,7 @@ This todo will contain its title and a description (which is a new information n
 
 
 # Technical environment
+-MVVM Architecture 
 -Kotlin
 -Local DB(Room)
 -LiveData
