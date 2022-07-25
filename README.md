@@ -3,7 +3,7 @@ TODO app initial version:
 ##  1 : List my TODOs
 
 ### Description :
-As a user I would like to list my current todos
+As a user I would like to list my current todos with the possibility of filter the search by title.
 ### Acceptance criterias :
 - Each todo could have, at minimal, a related state and title
 - Some hard-coded todos populates the db after creation
