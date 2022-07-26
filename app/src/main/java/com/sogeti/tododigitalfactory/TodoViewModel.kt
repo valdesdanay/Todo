@@ -16,15 +16,14 @@
 
 package com.sogeti.tododigitalfactory
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.sogeti.tododigitalfactory.data.Todo
 import com.sogeti.tododigitalfactory.data.TodoRepository
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.flatMapConcat
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.launch
 
@@ -37,6 +36,7 @@ class TodoViewModel(private val repository: TodoRepository) : ViewModel() {
 
     val searchFilter = MutableStateFlow("")
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     private val todoFlow = searchFilter.flatMapLatest { repository.allFilterTodos(it) }
 
     // Using LiveData and caching what allFilteredTodos returns has several benefits:

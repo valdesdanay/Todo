@@ -20,9 +20,9 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var adapter: TodoAdapter
+    private lateinit var adapter: TodoAdapter
     //Search filter string
-    var searchFilter: String? = null
+    private var searchFilter: String? = null
 
     private val todoViewModel: TodoViewModel by viewModels {
         TodoViewModelFactory((application as TodoApplication).repository)
@@ -34,14 +34,14 @@ class MainActivity : AppCompatActivity() {
 
 
         val fab = findViewById<FloatingActionButton>(R.id.fab)
-        fab.setOnClickListener { view ->
+        fab.setOnClickListener {
             openActivityForResult(AddTodoActivity.INSERT_REQUEST_CODE)
         }
 
         val edtFilter = findViewById<EditText>(R.id.edtFilter)
 
         val btnSearch = findViewById<Button>(R.id.btnSearch)
-        btnSearch.setOnClickListener { view ->
+        btnSearch.setOnClickListener {
             searchFilter = edtFilter.text.toString()
             todoViewModel.searchFilter.value = searchFilter as String
         }
@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initRecyclerView() {
         val manager = LinearLayoutManager(this)
-        var decoration = DividerItemDecoration(this, manager.orientation)
+        val decoration = DividerItemDecoration(this, manager.orientation)
         val recyclerView = findViewById<RecyclerView>(R.id.rcvTodo)
         recyclerView.layoutManager = manager
         recyclerView.adapter = adapter
@@ -80,11 +80,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onDoneChanged(todo: Todo) {
-        var doneDate: Long = 0
-        if (!todo.done) {
-            doneDate = Date().time
+        val doneDate = if (!todo.done) {
+            Date().time
         } else {
-            doneDate = 0
+            0
         }
 
         val difTodo = Todo(
@@ -103,27 +102,26 @@ class MainActivity : AppCompatActivity() {
         todo?.let {
             intent.putExtra(AddTodoActivity.EXTRA_REQUEST, todo)
         }
-        intent.putExtra(AddTodoActivity.REQUEST_KEY, requestCode);
+        intent.putExtra(AddTodoActivity.REQUEST_KEY, requestCode)
         startForResult.launch(intent)
     }
 
 
-    val startForResult =
+    private val startForResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
             if (result.resultCode == Activity.RESULT_OK) {
                 val intent = result.data
                 intent?.let {
                     val todo: Todo? = it.getParcelableExtra(AddTodoActivity.EXTRA_REPLY)
-                    val requestCode = it.getIntExtra(AddTodoActivity.REQUEST_KEY, 0)
-                    when (requestCode) {
+                    when (it.getIntExtra(AddTodoActivity.REQUEST_KEY, 0)) {
                         AddTodoActivity.INSERT_REQUEST_CODE -> {
-                            todo?.let {
-                                todoViewModel.insert(it)
+                            todo?.let { t ->
+                                todoViewModel.insert(t)
                             }
                         }
                         AddTodoActivity.UPDATE_REQUEST_CODE -> {
-                            todo?.let {
-                                todoViewModel.update(it)
+                            todo?.let { t->
+                                todoViewModel.update(t)
                             }
                         }
                         else -> {//Do nothing}

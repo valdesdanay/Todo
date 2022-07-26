@@ -1,6 +1,5 @@
 package com.sogeti.tododigitalfactory.data
 
-import com.sogeti.tododigitalfactory.data.Todo
 import java.util.*
 
 class TodoProvider {

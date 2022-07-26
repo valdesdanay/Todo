@@ -3,7 +3,7 @@ TODO app initial version:
 ##  1 : List my TODOs
 
 ### Description :
-As a user I would like to list my current todos with the possibility of filter the search by title.
+As a user I would like to list my current todos
 ### Acceptance criterias :
 - Each todo could have, at minimal, a related state and title
 - Some hard-coded todos populates the db after creation
@@ -34,7 +34,6 @@ This todo will contain its title and a description (which is a new information n
 
 
 # Technical environment
--MVVM Architecture 
 -Kotlin
 -Local DB(Room)
 -LiveData

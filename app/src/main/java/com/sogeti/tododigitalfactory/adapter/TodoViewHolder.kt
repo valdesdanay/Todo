@@ -14,22 +14,22 @@ class TodoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun render(todo: Todo, onClickListener: TodoAdapter.OnClickListener<Todo>) {
         title.text = todo.title
 
-        done.setOnCheckedChangeListener(null);
+        done.setOnCheckedChangeListener(null)
 
         done.isChecked = todo.done
 
         if (todo.done) {
-            title.paintFlags = title.getPaintFlags() or Paint.STRIKE_THRU_TEXT_FLAG
+            title.paintFlags = title.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
         } else {
-            title.paintFlags = title.getPaintFlags() and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+            title.paintFlags = title.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
         }
 
-        done.setOnCheckedChangeListener { buttonView, isChecked ->
+        done.setOnCheckedChangeListener { _, _ ->
             onClickListener.onChangeDoneState(todo)
         }
 
-        itemView.setOnClickListener(View.OnClickListener {
+        itemView.setOnClickListener {
             onClickListener.onClick(todo)
-        })
+        }
     }
 }

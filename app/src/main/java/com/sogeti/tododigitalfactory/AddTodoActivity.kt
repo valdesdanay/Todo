@@ -48,7 +48,6 @@ class AddTodoActivity : AppCompatActivity() {
                         now
                     )
                     replyIntent.putExtra(REQUEST_KEY, UPDATE_REQUEST_CODE)
-                    //todoRepository.updateTodo(todo)
                 } ?: kotlin.run {
                     newTodo = Todo(
                         null,
@@ -59,7 +58,6 @@ class AddTodoActivity : AppCompatActivity() {
                         now
                     )
                     replyIntent.putExtra(REQUEST_KEY, INSERT_REQUEST_CODE)
-                    // todoRepository.insertTodo(newTodo)
                 }
 
                 newTodo?.let {
@@ -83,10 +81,10 @@ class AddTodoActivity : AppCompatActivity() {
     }
 
     companion object {
-        val EXTRA_REQUEST = "todo"
-        val EXTRA_REPLY = "todo"
-        val REQUEST_KEY = "requestCode"
-        val INSERT_REQUEST_CODE = 1
-        val UPDATE_REQUEST_CODE = 2
+        const val EXTRA_REQUEST = "todo"
+        const val EXTRA_REPLY = "todo"
+        const val REQUEST_KEY = "requestCode"
+        const val INSERT_REQUEST_CODE = 1
+        const val UPDATE_REQUEST_CODE = 2
     }
 }
